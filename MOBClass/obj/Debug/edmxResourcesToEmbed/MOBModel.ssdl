@@ -80,6 +80,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="spMOBSeleccionarPromocionAleatoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dba" />
   <EntityContainer Name="ninadbServiciosModelStoreContainer">
     <EntitySet Name="MOBClientes" EntityType="Self.MOBClientes" Schema="dba" store:Type="Tables" />
     <EntitySet Name="MOBPromociones" EntityType="Self.MOBPromociones" Schema="dba" store:Type="Tables" />

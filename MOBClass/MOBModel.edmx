@@ -85,6 +85,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="spMOBSeleccionarPromocionAleatoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dba" />
         <EntityContainer Name="ninadbServiciosModelStoreContainer">
           <EntitySet Name="MOBClientes" EntityType="Self.MOBClientes" Schema="dba" store:Type="Tables" />
           <EntitySet Name="MOBPromociones" EntityType="Self.MOBPromociones" Schema="dba" store:Type="Tables" />
@@ -124,6 +125,7 @@
             <End Role="MOBUbicaciones" EntitySet="MOBUbicaciones" />
             <End Role="MOBPromocionesGeneradas" EntitySet="MOBPromocionesGeneradas" />
           </AssociationSet>
+          <FunctionImport Name="spMOBSeleccionarPromocionAleatoria" ReturnType="Collection(ninadbServiciosModel.spMOBSeleccionarPromocionAleatoria_Result)" />
         </EntityContainer>
         <EntityType Name="MOBClientes">
           <Key>
@@ -211,6 +213,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="spMOBSeleccionarPromocionAleatoria_Result">
+          <Property Type="Int32" Name="id_promocion" Nullable="false" />
+          <Property Type="String" Name="descripcion" Nullable="false" />
+          <Property Type="String" Name="especificaciones" Nullable="true" />
+          <Property Type="Int32" Name="premios_restantes" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -265,6 +273,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spMOBSeleccionarPromocionAleatoria" FunctionName="ninadbServiciosModel.Store.spMOBSeleccionarPromocionAleatoria">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ninadbServiciosModel.spMOBSeleccionarPromocionAleatoria_Result">
+                <ScalarProperty Name="id_promocion" ColumnName="id_promocion" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="especificaciones" ColumnName="especificaciones" />
+                <ScalarProperty Name="premios_restantes" ColumnName="premios_restantes" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

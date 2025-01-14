@@ -17,6 +17,7 @@
       <End Role="MOBUbicaciones" EntitySet="MOBUbicaciones" />
       <End Role="MOBPromocionesGeneradas" EntitySet="MOBPromocionesGeneradas" />
     </AssociationSet>
+    <FunctionImport Name="spMOBSeleccionarPromocionAleatoria" ReturnType="Collection(ninadbServiciosModel.spMOBSeleccionarPromocionAleatoria_Result)" />
   </EntityContainer>
   <EntityType Name="MOBClientes">
     <Key>
@@ -104,4 +105,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <ComplexType Name="spMOBSeleccionarPromocionAleatoria_Result">
+    <Property Type="Int32" Name="id_promocion" Nullable="false" />
+    <Property Type="String" Name="descripcion" Nullable="false" />
+    <Property Type="String" Name="especificaciones" Nullable="true" />
+    <Property Type="Int32" Name="premios_restantes" Nullable="false" />
+  </ComplexType>
 </Schema>

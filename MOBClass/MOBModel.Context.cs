@@ -12,6 +12,8 @@ namespace MOBClass
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class ninadbEntities : DbContext
     {
@@ -29,5 +31,10 @@ namespace MOBClass
         public virtual DbSet<MOBPromociones> MOBPromociones { get; set; }
         public virtual DbSet<MOBPromocionesGeneradas> MOBPromocionesGeneradas { get; set; }
         public virtual DbSet<MOBUbicaciones> MOBUbicaciones { get; set; }
+    
+        public virtual ObjectResult<spMOBSeleccionarPromocionAleatoria_Result> spMOBSeleccionarPromocionAleatoria()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spMOBSeleccionarPromocionAleatoria_Result>("spMOBSeleccionarPromocionAleatoria");
+        }
     }
 }

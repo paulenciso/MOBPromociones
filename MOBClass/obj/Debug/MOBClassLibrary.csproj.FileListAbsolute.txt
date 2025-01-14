@@ -1,0 +1,12 @@
+C:\Users\Sistemas2\Documents\GitHub\MOBPromociones\MOBClass\bin\Debug\MOBClassLibrary.dll.config
+C:\Users\Sistemas2\Documents\GitHub\MOBPromociones\MOBClass\bin\Debug\MOBClassLibrary.dll
+C:\Users\Sistemas2\Documents\GitHub\MOBPromociones\MOBClass\bin\Debug\MOBClassLibrary.pdb
+C:\Users\Sistemas2\Documents\GitHub\MOBPromociones\MOBClass\bin\Debug\EntityFramework.dll
+C:\Users\Sistemas2\Documents\GitHub\MOBPromociones\MOBClass\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Sistemas2\Documents\GitHub\MOBPromociones\MOBClass\bin\Debug\EntityFramework.xml
+C:\Users\Sistemas2\Documents\GitHub\MOBPromociones\MOBClass\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Sistemas2\Documents\GitHub\MOBPromociones\MOBClass\obj\Debug\MOBClassLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Sistemas2\Documents\GitHub\MOBPromociones\MOBClass\obj\Debug\MOBClassLibrary.csproj.CopyComplete
+C:\Users\Sistemas2\Documents\GitHub\MOBPromociones\MOBClass\obj\Debug\MOBClassLibrary.dll
+C:\Users\Sistemas2\Documents\GitHub\MOBPromociones\MOBClass\obj\Debug\MOBClassLibrary.pdb
+C:\Users\Sistemas2\Documents\GitHub\MOBPromociones\MOBClass\obj\Debug\MOBClassLibrary.csprojAssemblyReference.cache

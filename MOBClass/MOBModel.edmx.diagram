@@ -12,6 +12,7 @@
         <AssociationConnector Association="ninadbServiciosModel.FK__MOBPromoc__id_cl__4342AD08" />
         <AssociationConnector Association="ninadbServiciosModel.FK__MOBPromoc__id_pr__424E88CF" />
         <AssociationConnector Association="ninadbServiciosModel.FK__MOBPromoc__id_ub__4436D141" />
+        <AssociationConnector Association="ninadbServiciosModel.FK__MOBClient__id_ub__61C73428" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

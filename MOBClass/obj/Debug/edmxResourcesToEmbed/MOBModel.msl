@@ -49,5 +49,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spMOBSeleccionarPromocionAleatoria" FunctionName="ninadbServiciosModel.Store.spMOBSeleccionarPromocionAleatoria">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ninadbServiciosModel.spMOBSeleccionarPromocionAleatoria_Result">
+          <ScalarProperty Name="id_promocion" ColumnName="id_promocion" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="especificaciones" ColumnName="especificaciones" />
+          <ScalarProperty Name="premios_restantes" ColumnName="premios_restantes" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>
