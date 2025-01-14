@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ninadbServiciosModelStoreContainer" CdmEntityContainer="ninadbEntities">
+    <EntitySetMapping Name="MOBClientes">
+      <EntityTypeMapping TypeName="ninadbServiciosModel.MOBClientes">
+        <MappingFragment StoreEntitySet="MOBClientes">
+          <ScalarProperty Name="tokenValidacion" ColumnName="tokenValidacion" />
+          <ScalarProperty Name="fecha_validacion" ColumnName="fecha_validacion" />
+          <ScalarProperty Name="validado" ColumnName="validado" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MOBPromociones">
+      <EntityTypeMapping TypeName="ninadbServiciosModel.MOBPromociones">
+        <MappingFragment StoreEntitySet="MOBPromociones">
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="premios_restantes" ColumnName="premios_restantes" />
+          <ScalarProperty Name="imagen_nombre" ColumnName="imagen_nombre" />
+          <ScalarProperty Name="cantidad_premios" ColumnName="cantidad_premios" />
+          <ScalarProperty Name="especificaciones" ColumnName="especificaciones" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id_promocion" ColumnName="id_promocion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MOBPromocionesGeneradas">
+      <EntityTypeMapping TypeName="ninadbServiciosModel.MOBPromocionesGeneradas">
+        <MappingFragment StoreEntitySet="MOBPromocionesGeneradas">
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="id_ticket" ColumnName="id_ticket" />
+          <ScalarProperty Name="entregado" ColumnName="entregado" />
+          <ScalarProperty Name="fecha_canje" ColumnName="fecha_canje" />
+          <ScalarProperty Name="id_ubicacion" ColumnName="id_ubicacion" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="id_promocion" ColumnName="id_promocion" />
+          <ScalarProperty Name="id_promocion_generada" ColumnName="id_promocion_generada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MOBUbicaciones">
+      <EntityTypeMapping TypeName="ninadbServiciosModel.MOBUbicaciones">
+        <MappingFragment StoreEntitySet="MOBUbicaciones">
+          <ScalarProperty Name="codigoURL" ColumnName="codigoURL" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_ubicacion" ColumnName="id_ubicacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

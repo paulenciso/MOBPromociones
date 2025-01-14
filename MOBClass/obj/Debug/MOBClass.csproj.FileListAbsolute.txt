@@ -1,0 +1,12 @@
+C:\Users\Sistemas2\Documents\GitHub\MOBClass\bin\Debug\MOBClass.dll
+C:\Users\Sistemas2\Documents\GitHub\MOBClass\bin\Debug\MOBClass.pdb
+C:\Users\Sistemas2\Documents\GitHub\MOBClass\obj\Debug\MOBClass.csprojAssemblyReference.cache
+C:\Users\Sistemas2\Documents\GitHub\MOBClass\obj\Debug\MOBClass.csproj.CoreCompileInputs.cache
+C:\Users\Sistemas2\Documents\GitHub\MOBClass\obj\Debug\MOBClass.dll
+C:\Users\Sistemas2\Documents\GitHub\MOBClass\obj\Debug\MOBClass.pdb
+C:\Users\Sistemas2\Documents\GitHub\MOBClass\bin\Debug\MOBClass.dll.config
+C:\Users\Sistemas2\Documents\GitHub\MOBClass\bin\Debug\EntityFramework.dll
+C:\Users\Sistemas2\Documents\GitHub\MOBClass\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Sistemas2\Documents\GitHub\MOBClass\bin\Debug\EntityFramework.xml
+C:\Users\Sistemas2\Documents\GitHub\MOBClass\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Sistemas2\Documents\GitHub\MOBClass\obj\Debug\MOBClass.csproj.CopyComplete

@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ninadbServiciosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="MOBClientes">
+    <Key>
+      <PropertyRef Name="id_cliente" />
+    </Key>
+    <Property Name="id_cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="correo" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="tokenValidacion" Type="varchar(max)" Nullable="false" />
+    <Property Name="validado" Type="bit" />
+    <Property Name="fecha_validacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MOBPromociones">
+    <Key>
+      <PropertyRef Name="id_promocion" />
+    </Key>
+    <Property Name="id_promocion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="especificaciones" Type="nvarchar(max)" />
+    <Property Name="cantidad_premios" Type="int" Nullable="false" />
+    <Property Name="imagen_nombre" Type="varchar" MaxLength="255" />
+    <Property Name="premios_restantes" Type="int" Nullable="false" />
+    <Property Name="fecha_creacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MOBPromocionesGeneradas">
+    <Key>
+      <PropertyRef Name="id_promocion_generada" />
+    </Key>
+    <Property Name="id_promocion_generada" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_promocion" Type="int" Nullable="false" />
+    <Property Name="id_cliente" Type="int" Nullable="false" />
+    <Property Name="id_ubicacion" Type="int" Nullable="false" />
+    <Property Name="fecha_canje" Type="datetime" />
+    <Property Name="entregado" Type="bit" />
+    <Property Name="id_ticket" Type="int" />
+    <Property Name="fecha_creacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MOBUbicaciones">
+    <Key>
+      <PropertyRef Name="id_ubicacion" />
+    </Key>
+    <Property Name="id_ubicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" />
+    <Property Name="codigoURL" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__MOBPromoc__id_cl__537914D1">
+    <End Role="MOBClientes" Type="Self.MOBClientes" Multiplicity="1" />
+    <End Role="MOBPromocionesGeneradas" Type="Self.MOBPromocionesGeneradas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MOBClientes">
+        <PropertyRef Name="id_cliente" />
+      </Principal>
+      <Dependent Role="MOBPromocionesGeneradas">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MOBPromoc__id_pr__5284F098">
+    <End Role="MOBPromociones" Type="Self.MOBPromociones" Multiplicity="1" />
+    <End Role="MOBPromocionesGeneradas" Type="Self.MOBPromocionesGeneradas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MOBPromociones">
+        <PropertyRef Name="id_promocion" />
+      </Principal>
+      <Dependent Role="MOBPromocionesGeneradas">
+        <PropertyRef Name="id_promocion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MOBPromoc__id_ub__546D390A">
+    <End Role="MOBUbicaciones" Type="Self.MOBUbicaciones" Multiplicity="1" />
+    <End Role="MOBPromocionesGeneradas" Type="Self.MOBPromocionesGeneradas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MOBUbicaciones">
+        <PropertyRef Name="id_ubicacion" />
+      </Principal>
+      <Dependent Role="MOBPromocionesGeneradas">
+        <PropertyRef Name="id_ubicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ninadbServiciosModelStoreContainer">
+    <EntitySet Name="MOBClientes" EntityType="Self.MOBClientes" Schema="dba" store:Type="Tables" />
+    <EntitySet Name="MOBPromociones" EntityType="Self.MOBPromociones" Schema="dba" store:Type="Tables" />
+    <EntitySet Name="MOBPromocionesGeneradas" EntityType="Self.MOBPromocionesGeneradas" Schema="dba" store:Type="Tables" />
+    <EntitySet Name="MOBUbicaciones" EntityType="Self.MOBUbicaciones" Schema="dba" store:Type="Tables" />
+    <AssociationSet Name="FK__MOBPromoc__id_cl__537914D1" Association="Self.FK__MOBPromoc__id_cl__537914D1">
+      <End Role="MOBClientes" EntitySet="MOBClientes" />
+      <End Role="MOBPromocionesGeneradas" EntitySet="MOBPromocionesGeneradas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MOBPromoc__id_pr__5284F098" Association="Self.FK__MOBPromoc__id_pr__5284F098">
+      <End Role="MOBPromociones" EntitySet="MOBPromociones" />
+      <End Role="MOBPromocionesGeneradas" EntitySet="MOBPromocionesGeneradas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MOBPromoc__id_ub__546D390A" Association="Self.FK__MOBPromoc__id_ub__546D390A">
+      <End Role="MOBUbicaciones" EntitySet="MOBUbicaciones" />
+      <End Role="MOBPromocionesGeneradas" EntitySet="MOBPromocionesGeneradas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

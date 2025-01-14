@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ninadbServiciosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ninadbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MOBClientes" EntityType="ninadbServiciosModel.MOBClientes" />
+    <EntitySet Name="MOBPromociones" EntityType="ninadbServiciosModel.MOBPromociones" />
+    <EntitySet Name="MOBPromocionesGeneradas" EntityType="ninadbServiciosModel.MOBPromocionesGeneradas" />
+    <EntitySet Name="MOBUbicaciones" EntityType="ninadbServiciosModel.MOBUbicaciones" />
+    <AssociationSet Name="FK__MOBPromoc__id_cl__4342AD08" Association="ninadbServiciosModel.FK__MOBPromoc__id_cl__4342AD08">
+      <End Role="MOBClientes" EntitySet="MOBClientes" />
+      <End Role="MOBPromocionesGeneradas" EntitySet="MOBPromocionesGeneradas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MOBPromoc__id_pr__424E88CF" Association="ninadbServiciosModel.FK__MOBPromoc__id_pr__424E88CF">
+      <End Role="MOBPromociones" EntitySet="MOBPromociones" />
+      <End Role="MOBPromocionesGeneradas" EntitySet="MOBPromocionesGeneradas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MOBPromoc__id_ub__4436D141" Association="ninadbServiciosModel.FK__MOBPromoc__id_ub__4436D141">
+      <End Role="MOBUbicaciones" EntitySet="MOBUbicaciones" />
+      <End Role="MOBPromocionesGeneradas" EntitySet="MOBPromocionesGeneradas" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="MOBClientes">
+    <Key>
+      <PropertyRef Name="id_cliente" />
+    </Key>
+    <Property Name="id_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="correo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="validado" Type="Boolean" />
+    <Property Name="fecha_validacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="MOBPromocionesGeneradas" Relationship="ninadbServiciosModel.FK__MOBPromoc__id_cl__4342AD08" FromRole="MOBClientes" ToRole="MOBPromocionesGeneradas" />
+    <Property Name="tokenValidacion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MOBPromociones">
+    <Key>
+      <PropertyRef Name="id_promocion" />
+    </Key>
+    <Property Name="id_promocion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="especificaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="cantidad_premios" Type="Int32" Nullable="false" />
+    <Property Name="imagen_nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="premios_restantes" Type="Int32" Nullable="false" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="MOBPromocionesGeneradas" Relationship="ninadbServiciosModel.FK__MOBPromoc__id_pr__424E88CF" FromRole="MOBPromociones" ToRole="MOBPromocionesGeneradas" />
+  </EntityType>
+  <EntityType Name="MOBPromocionesGeneradas">
+    <Key>
+      <PropertyRef Name="id_promocion_generada" />
+    </Key>
+    <Property Name="id_promocion_generada" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_promocion" Type="Int32" Nullable="false" />
+    <Property Name="id_cliente" Type="Int32" Nullable="false" />
+    <Property Name="id_ubicacion" Type="Int32" Nullable="false" />
+    <Property Name="fecha_canje" Type="DateTime" Precision="3" />
+    <Property Name="entregado" Type="Boolean" />
+    <Property Name="id_ticket" Type="Int32" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="MOBClientes" Relationship="ninadbServiciosModel.FK__MOBPromoc__id_cl__4342AD08" FromRole="MOBPromocionesGeneradas" ToRole="MOBClientes" />
+    <NavigationProperty Name="MOBPromociones" Relationship="ninadbServiciosModel.FK__MOBPromoc__id_pr__424E88CF" FromRole="MOBPromocionesGeneradas" ToRole="MOBPromociones" />
+    <NavigationProperty Name="MOBUbicaciones" Relationship="ninadbServiciosModel.FK__MOBPromoc__id_ub__4436D141" FromRole="MOBPromocionesGeneradas" ToRole="MOBUbicaciones" />
+  </EntityType>
+  <EntityType Name="MOBUbicaciones">
+    <Key>
+      <PropertyRef Name="id_ubicacion" />
+    </Key>
+    <Property Name="id_ubicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="codigoURL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="MOBPromocionesGeneradas" Relationship="ninadbServiciosModel.FK__MOBPromoc__id_ub__4436D141" FromRole="MOBUbicaciones" ToRole="MOBPromocionesGeneradas" />
+  </EntityType>
+  <Association Name="FK__MOBPromoc__id_cl__4342AD08">
+    <End Type="ninadbServiciosModel.MOBClientes" Role="MOBClientes" Multiplicity="1" />
+    <End Type="ninadbServiciosModel.MOBPromocionesGeneradas" Role="MOBPromocionesGeneradas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MOBClientes">
+        <PropertyRef Name="id_cliente" />
+      </Principal>
+      <Dependent Role="MOBPromocionesGeneradas">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MOBPromoc__id_pr__424E88CF">
+    <End Type="ninadbServiciosModel.MOBPromociones" Role="MOBPromociones" Multiplicity="1" />
+    <End Type="ninadbServiciosModel.MOBPromocionesGeneradas" Role="MOBPromocionesGeneradas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MOBPromociones">
+        <PropertyRef Name="id_promocion" />
+      </Principal>
+      <Dependent Role="MOBPromocionesGeneradas">
+        <PropertyRef Name="id_promocion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MOBPromoc__id_ub__4436D141">
+    <End Type="ninadbServiciosModel.MOBUbicaciones" Role="MOBUbicaciones" Multiplicity="1" />
+    <End Type="ninadbServiciosModel.MOBPromocionesGeneradas" Role="MOBPromocionesGeneradas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MOBUbicaciones">
+        <PropertyRef Name="id_ubicacion" />
+      </Principal>
+      <Dependent Role="MOBPromocionesGeneradas">
+        <PropertyRef Name="id_ubicacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
