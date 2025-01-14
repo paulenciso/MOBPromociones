@@ -17,5 +17,8 @@ namespace MOBClass
         public string descripcion { get; set; }
         public string especificaciones { get; set; }
         public int premios_restantes { get; set; }
+        public int cantidad_premios { get; set; }
+        public string imagen_nombre { get; set; }
+        public Nullable<System.DateTime> fecha_creacion { get; set; }
     }
 }

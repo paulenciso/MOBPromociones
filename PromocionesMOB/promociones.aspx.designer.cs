@@ -96,6 +96,33 @@ namespace PromocionesMOB
         protected global::System.Web.UI.WebControls.View vCorreoValidacion;
 
         /// <summary>
+        /// Control btn_generar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_generar;
+
+        /// <summary>
+        /// Control vPromocion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View vPromocion;
+
+        /// <summary>
+        /// Control lbl_promocion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_promocion;
+
+        /// <summary>
         /// Control vNoID.
         /// </summary>
         /// <remarks>

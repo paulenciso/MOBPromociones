@@ -38,6 +38,7 @@ namespace MOBClass
                 if (!ubicacion.nombre.Equals(_ubicacion.nombre)) ubicacion.nombre = _ubicacion.nombre;
                 if (!ubicacion.descripcion.Equals(_ubicacion.descripcion)) ubicacion.descripcion = _ubicacion.descripcion;
                 if (!ubicacion.codigoURL.Equals(_ubicacion.codigoURL)) ubicacion.codigoURL = _ubicacion.codigoURL;
+                if (ubicacion.id_ubicacion != _ubicacion.id_ubicacion) ubicacion.id_ubicacion = _ubicacion.id_ubicacion;
 
                 return ninadbCore.SaveChanges();
             }

@@ -50,7 +50,7 @@ namespace MOBClass
         /// </summary>
         /// <param name="_idPromocion">ID de la promocion a buscar</param>
         /// <returns>Objeto de tipo MOBPromociones</returns>
-        public static MOBPromociones ObtenerMOBPromociones(int _idPromocion)
+        public static MOBPromociones ObtenerMOBPromocion(int _idPromocion)
         {
             using (ninadbEntities ninadbCore = new ninadbEntities())
             {
@@ -67,6 +67,14 @@ namespace MOBClass
             using (ninadbEntities ninadbCore = new ninadbEntities())
             {
                 return ninadbCore.MOBPromociones.ToList();
+            }
+        }
+
+        public static MOBPromociones SeleccionarPromocionAleatoria()
+        {
+            using (ninadbEntities ninadbCore = new ninadbEntities())
+            {
+                return ninadbCore.spMOBSeleccionarPromocionAleatoria().FirstOrDefault();
             }
         }
     }

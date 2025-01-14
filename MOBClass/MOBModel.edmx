@@ -14,6 +14,7 @@
           <Property Name="tokenValidacion" Type="varchar(max)" Nullable="false" />
           <Property Name="validado" Type="bit" />
           <Property Name="fecha_validacion" Type="datetime" />
+          <Property Name="id_ubicacion" Type="int" />
         </EntityType>
         <EntityType Name="MOBPromociones">
           <Key>
@@ -23,7 +24,7 @@
           <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
           <Property Name="especificaciones" Type="nvarchar(max)" />
           <Property Name="cantidad_premios" Type="int" Nullable="false" />
-          <Property Name="imagen_nombre" Type="varchar" MaxLength="255" />
+          <Property Name="imagen_nombre" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="premios_restantes" Type="int" Nullable="false" />
           <Property Name="fecha_creacion" Type="datetime" />
         </EntityType>
@@ -49,7 +50,19 @@
           <Property Name="descripcion" Type="nvarchar(max)" />
           <Property Name="codigoURL" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__MOBPromoc__id_cl__537914D1">
+        <Association Name="FK__MOBClient__id_ub__61C73428">
+          <End Role="MOBUbicaciones" Type="Self.MOBUbicaciones" Multiplicity="0..1" />
+          <End Role="MOBClientes" Type="Self.MOBClientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MOBUbicaciones">
+              <PropertyRef Name="id_ubicacion" />
+            </Principal>
+            <Dependent Role="MOBClientes">
+              <PropertyRef Name="id_ubicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MOBPromoc__id_cl__67800D7E">
           <End Role="MOBClientes" Type="Self.MOBClientes" Multiplicity="1" />
           <End Role="MOBPromocionesGeneradas" Type="Self.MOBPromocionesGeneradas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -61,7 +74,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MOBPromoc__id_pr__5284F098">
+        <Association Name="FK__MOBPromoc__id_pr__668BE945">
           <End Role="MOBPromociones" Type="Self.MOBPromociones" Multiplicity="1" />
           <End Role="MOBPromocionesGeneradas" Type="Self.MOBPromocionesGeneradas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -73,7 +86,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MOBPromoc__id_ub__546D390A">
+        <Association Name="FK__MOBPromoc__id_ub__687431B7">
           <End Role="MOBUbicaciones" Type="Self.MOBUbicaciones" Multiplicity="1" />
           <End Role="MOBPromocionesGeneradas" Type="Self.MOBPromocionesGeneradas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -91,15 +104,19 @@
           <EntitySet Name="MOBPromociones" EntityType="Self.MOBPromociones" Schema="dba" store:Type="Tables" />
           <EntitySet Name="MOBPromocionesGeneradas" EntityType="Self.MOBPromocionesGeneradas" Schema="dba" store:Type="Tables" />
           <EntitySet Name="MOBUbicaciones" EntityType="Self.MOBUbicaciones" Schema="dba" store:Type="Tables" />
-          <AssociationSet Name="FK__MOBPromoc__id_cl__537914D1" Association="Self.FK__MOBPromoc__id_cl__537914D1">
+          <AssociationSet Name="FK__MOBClient__id_ub__61C73428" Association="Self.FK__MOBClient__id_ub__61C73428">
+            <End Role="MOBUbicaciones" EntitySet="MOBUbicaciones" />
+            <End Role="MOBClientes" EntitySet="MOBClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MOBPromoc__id_cl__67800D7E" Association="Self.FK__MOBPromoc__id_cl__67800D7E">
             <End Role="MOBClientes" EntitySet="MOBClientes" />
             <End Role="MOBPromocionesGeneradas" EntitySet="MOBPromocionesGeneradas" />
           </AssociationSet>
-          <AssociationSet Name="FK__MOBPromoc__id_pr__5284F098" Association="Self.FK__MOBPromoc__id_pr__5284F098">
+          <AssociationSet Name="FK__MOBPromoc__id_pr__668BE945" Association="Self.FK__MOBPromoc__id_pr__668BE945">
             <End Role="MOBPromociones" EntitySet="MOBPromociones" />
             <End Role="MOBPromocionesGeneradas" EntitySet="MOBPromocionesGeneradas" />
           </AssociationSet>
-          <AssociationSet Name="FK__MOBPromoc__id_ub__546D390A" Association="Self.FK__MOBPromoc__id_ub__546D390A">
+          <AssociationSet Name="FK__MOBPromoc__id_ub__687431B7" Association="Self.FK__MOBPromoc__id_ub__687431B7">
             <End Role="MOBUbicaciones" EntitySet="MOBUbicaciones" />
             <End Role="MOBPromocionesGeneradas" EntitySet="MOBPromocionesGeneradas" />
           </AssociationSet>
@@ -125,7 +142,11 @@
             <End Role="MOBUbicaciones" EntitySet="MOBUbicaciones" />
             <End Role="MOBPromocionesGeneradas" EntitySet="MOBPromocionesGeneradas" />
           </AssociationSet>
-          <FunctionImport Name="spMOBSeleccionarPromocionAleatoria" ReturnType="Collection(ninadbServiciosModel.spMOBSeleccionarPromocionAleatoria_Result)" />
+          <FunctionImport Name="spMOBSeleccionarPromocionAleatoria" EntitySet="MOBPromociones" ReturnType="Collection(ninadbServiciosModel.MOBPromociones)" />
+          <AssociationSet Name="FK__MOBClient__id_ub__61C73428" Association="ninadbServiciosModel.FK__MOBClient__id_ub__61C73428">
+            <End Role="MOBUbicaciones" EntitySet="MOBUbicaciones" />
+            <End Role="MOBClientes" EntitySet="MOBClientes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="MOBClientes">
           <Key>
@@ -137,6 +158,8 @@
           <Property Name="fecha_validacion" Type="DateTime" Precision="3" />
           <NavigationProperty Name="MOBPromocionesGeneradas" Relationship="ninadbServiciosModel.FK__MOBPromoc__id_cl__4342AD08" FromRole="MOBClientes" ToRole="MOBPromocionesGeneradas" />
           <Property Name="tokenValidacion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="id_ubicacion" Type="Int32" />
+          <NavigationProperty Name="MOBUbicaciones" Relationship="ninadbServiciosModel.FK__MOBClient__id_ub__61C73428" FromRole="MOBClientes" ToRole="MOBUbicaciones" />
         </EntityType>
         <EntityType Name="MOBPromociones">
           <Key>
@@ -146,7 +169,7 @@
           <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="especificaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="cantidad_premios" Type="Int32" Nullable="false" />
-          <Property Name="imagen_nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="imagen_nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="premios_restantes" Type="Int32" Nullable="false" />
           <Property Name="fecha_creacion" Type="DateTime" Precision="3" />
           <NavigationProperty Name="MOBPromocionesGeneradas" Relationship="ninadbServiciosModel.FK__MOBPromoc__id_pr__424E88CF" FromRole="MOBPromociones" ToRole="MOBPromocionesGeneradas" />
@@ -176,6 +199,7 @@
           <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="codigoURL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MOBPromocionesGeneradas" Relationship="ninadbServiciosModel.FK__MOBPromoc__id_ub__4436D141" FromRole="MOBUbicaciones" ToRole="MOBPromocionesGeneradas" />
+          <NavigationProperty Name="MOBClientes" Relationship="ninadbServiciosModel.FK__MOBClient__id_ub__61C73428" FromRole="MOBUbicaciones" ToRole="MOBClientes" />
         </EntityType>
         <Association Name="FK__MOBPromoc__id_cl__4342AD08">
           <End Type="ninadbServiciosModel.MOBClientes" Role="MOBClientes" Multiplicity="1" />
@@ -218,7 +242,22 @@
           <Property Type="String" Name="descripcion" Nullable="false" />
           <Property Type="String" Name="especificaciones" Nullable="true" />
           <Property Type="Int32" Name="premios_restantes" Nullable="false" />
+          <Property Type="Int32" Name="cantidad_premios" Nullable="false" />
+          <Property Type="String" Name="imagen_nombre" Nullable="false" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="true" Precision="23" />
         </ComplexType>
+        <Association Name="FK__MOBClient__id_ub__61C73428">
+          <End Type="ninadbServiciosModel.MOBUbicaciones" Role="MOBUbicaciones" Multiplicity="0..1" />
+          <End Type="ninadbServiciosModel.MOBClientes" Role="MOBClientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MOBUbicaciones">
+              <PropertyRef Name="id_ubicacion" />
+            </Principal>
+            <Dependent Role="MOBClientes">
+              <PropertyRef Name="id_ubicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -228,6 +267,7 @@
           <EntitySetMapping Name="MOBClientes">
             <EntityTypeMapping TypeName="ninadbServiciosModel.MOBClientes">
               <MappingFragment StoreEntitySet="MOBClientes">
+                <ScalarProperty Name="id_ubicacion" ColumnName="id_ubicacion" />
                 <ScalarProperty Name="tokenValidacion" ColumnName="tokenValidacion" />
                 <ScalarProperty Name="fecha_validacion" ColumnName="fecha_validacion" />
                 <ScalarProperty Name="validado" ColumnName="validado" />
@@ -274,14 +314,6 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="spMOBSeleccionarPromocionAleatoria" FunctionName="ninadbServiciosModel.Store.spMOBSeleccionarPromocionAleatoria">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ninadbServiciosModel.spMOBSeleccionarPromocionAleatoria_Result">
-                <ScalarProperty Name="id_promocion" ColumnName="id_promocion" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="especificaciones" ColumnName="especificaciones" />
-                <ScalarProperty Name="premios_restantes" ColumnName="premios_restantes" />
-              </ComplexTypeMapping>
-            </ResultMapping>
           </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>

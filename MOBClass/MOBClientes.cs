@@ -25,8 +25,10 @@ namespace MOBClass
         public Nullable<bool> validado { get; set; }
         public Nullable<System.DateTime> fecha_validacion { get; set; }
         public string tokenValidacion { get; set; }
+        public Nullable<int> id_ubicacion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MOBPromocionesGeneradas> MOBPromocionesGeneradas { get; set; }
+        public virtual MOBUbicaciones MOBUbicaciones { get; set; }
     }
 }

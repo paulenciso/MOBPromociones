@@ -32,9 +32,14 @@ namespace MOBClass
         public virtual DbSet<MOBPromocionesGeneradas> MOBPromocionesGeneradas { get; set; }
         public virtual DbSet<MOBUbicaciones> MOBUbicaciones { get; set; }
     
-        public virtual ObjectResult<spMOBSeleccionarPromocionAleatoria_Result> spMOBSeleccionarPromocionAleatoria()
+        public virtual ObjectResult<MOBPromociones> spMOBSeleccionarPromocionAleatoria()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spMOBSeleccionarPromocionAleatoria_Result>("spMOBSeleccionarPromocionAleatoria");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MOBPromociones>("spMOBSeleccionarPromocionAleatoria");
+        }
+    
+        public virtual ObjectResult<MOBPromociones> spMOBSeleccionarPromocionAleatoria(MergeOption mergeOption)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MOBPromociones>("spMOBSeleccionarPromocionAleatoria", mergeOption);
         }
     }
 }

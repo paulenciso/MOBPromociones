@@ -18,6 +18,7 @@ namespace MOBClass
         public MOBUbicaciones()
         {
             this.MOBPromocionesGeneradas = new HashSet<MOBPromocionesGeneradas>();
+            this.MOBClientes = new HashSet<MOBClientes>();
         }
     
         public int id_ubicacion { get; set; }
@@ -27,5 +28,7 @@ namespace MOBClass
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MOBPromocionesGeneradas> MOBPromocionesGeneradas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MOBClientes> MOBClientes { get; set; }
     }
 }

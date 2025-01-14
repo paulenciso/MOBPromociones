@@ -37,6 +37,7 @@ namespace MOBClass
 
                 if (!cliente.correo.Equals(_cliente.correo)) cliente.correo = _cliente.correo;
                 if (!cliente.tokenValidacion.Equals(_cliente.tokenValidacion)) cliente.tokenValidacion = _cliente.tokenValidacion;
+                if (cliente.fecha_validacion != _cliente.fecha_validacion) cliente.fecha_validacion = _cliente.fecha_validacion;
                 if (cliente.validado != _cliente.validado) cliente.validado = _cliente.validado;
 
                 return ninadbCore.SaveChanges();

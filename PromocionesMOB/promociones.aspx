@@ -9,17 +9,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <link href='https://fonts.googleapis.com/css?family=Libre Barcode 39' rel='stylesheet' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Meta viewport -->
     <style>
         body {
-            background-color: #ffffff;
+
+            /*   background-color: #ffffff;
             font-family: 'Roboto', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('Imagenes/conejo_1.svg') 0 0, url('Imagenes/mob_logo.svg') 0 150px; 
+            background-repeat: repeat; /* Repetir los archivos PNG a lo largo del fondo */
+            background-size: 250px 250px; /* Ajustar el tamaño de cada patrón */
+            font-family: Athelas-Regular, ITCAvantGardePro-Md;
+            text-align: center;
             margin: 0;
+            padding: 0;
+            height: 100vh; /* Asegura que el fondo cubra toda la altura de la ventana */
         }
 
         .form-container {
@@ -61,44 +74,80 @@
                     font-size: 18px;
                 }
         }
+
+
+        @font-face {
+            font-family: '3 of 9 Barcode';            
+            src: local('3 of 9 Barcode'), url('~/fonts/3OF9_NEW.TTF') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'ITCAvantGardePro-Md';
+            font-style: normal;
+            font-weight: normal;
+            src: local('ITCAvantGardePro-Md'), url('~/fonts/ITCAvantGardePro-Md.TTF') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'ITCAvantGardePro-Md';
+            font-style: normal;
+            font-weight: normal;
+            src: local('Athelas-Regular'), url('~/fonts/Athelas-Regular-Md.TTF') format('truetype');
+        }
+
+        .font {
+            font-family: '3 of 9 Barcode','Libre Barcode 39';
+            font-size: 32px;
+            color: black;
+            letter-spacing: 3px;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="form-container">
-            <asp:MultiView runat="server" ActiveViewIndex="0" ID="mvw_opciones">
-                <asp:View runat="server" ID="vCorreo">
-                    <h4>Para participar, ingresa tu correo</h4>
-                    <asp:Label ID="lbl_message" runat="server" CssClass="error-message" Visible="false"></asp:Label>
+        <asp:ScriptManager runat="server" EnablePageMethods="true" />
+        <asp:UpdatePanel runat="server">
+            <ContentTemplate>
+                <div class="form-container">
+                    <asp:MultiView runat="server" ActiveViewIndex="0" ID="mvw_opciones">
+                        <asp:View runat="server" ID="vCorreo">
+                            <h4>Para participar, ingresa tu correo</h4>
+                            <asp:Label ID="lbl_message" runat="server" CssClass="error-message" Visible="false"></asp:Label>
 
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <asp:TextBox ID="txt_email" runat="server" CssClass="mdl-textfield__input" Placeholder="Correo Electrónico" />
-                        <label class="mdl-textfield__label" for="txt_email">Correo Electrónico</label>
-                        <asp:RegularExpressionValidator
-                            ID="regexEmailValidator"
-                            runat="server"
-                            ControlToValidate="txt_email"
-                            ErrorMessage="Introduce un correo válido."
-                            ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$"
-                            CssClass="error-message"></asp:RegularExpressionValidator>
-                        <asp:RequiredFieldValidator
-                            ID="requiredEmailValidator"
-                            runat="server"
-                            ControlToValidate="txt_email"
-                            ErrorMessage="El correo es obligatorio."
-                            CssClass="error-message"></asp:RequiredFieldValidator>
-                    </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <asp:TextBox ID="txt_email" runat="server" CssClass="mdl-textfield__input" Placeholder="Correo Electrónico" />
+                                <label class="mdl-textfield__label" for="txt_email">Correo Electrónico</label>
+                                <asp:RegularExpressionValidator
+                                    ID="regexEmailValidator"
+                                    runat="server"
+                                    ControlToValidate="txt_email"
+                                    ErrorMessage="Introduce un correo válido."
+                                    ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$"
+                                    CssClass="error-message"></asp:RegularExpressionValidator>
+                                <asp:RequiredFieldValidator
+                                    ID="requiredEmailValidator"
+                                    runat="server"
+                                    ControlToValidate="txt_email"
+                                    ErrorMessage="El correo es obligatorio."
+                                    CssClass="error-message"></asp:RequiredFieldValidator>
+                            </div>
 
-                    <asp:Button runat="server" CssClass="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ID="btn_validar" Text="Participar" OnClick="btn_validar_Click" />
-                </asp:View>
-                <asp:View runat="server" ID="vCorreoValidacion">
-
-                </asp:View>
-                <asp:View runat="server" ID="vNoID">
-
-                </asp:View>
-            </asp:MultiView>
-        </div>
+                            <asp:Button runat="server" CssClass="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ID="btn_validar" Text="Participar" OnClick="btn_validar_Click" />
+                        </asp:View>
+                        <asp:View runat="server" ID="vCorreoValidacion">
+                            <h4>Da clic para reclamar tu premio</h4>
+                            <asp:Button runat="server" CssClass="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ID="btn_generar" Text="Reclamar" OnClick="btn_generar_Click" />
+                        </asp:View>
+                        <asp:View runat="server" ID="vPromocion">
+                            <asp:Label runat="server" ID="lbl_promocion" />
+                        </asp:View>
+                        <asp:View runat="server" ID="vNoID">
+                            NO ID
+                        </asp:View>
+                    </asp:MultiView>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </form>
 </body>
 </html>
