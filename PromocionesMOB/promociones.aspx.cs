@@ -93,12 +93,10 @@ namespace PromocionesMOB
             string codigoBarras = promocionGenerada.id_ubicacion.ToString("D2") + promocionGenerada.id_promocion_generada.ToString("D3") + "-MOB" + promocionGenerada.id_promocion.ToString("D2");
             string texto = $@"
                             <div class='mdl-card mdl-shadow--2dp' style='padding: 20px; max-width: 600px; margin: 20px auto;'>
-                                <h3 class='mdl-typography--headline' style='text-align: center; color: #ff4081; margin-bottom: 10px;'>🎉 FELICIDADES 🎉</h3>
-                                <br/>
-                                <div style='width: 100%; height: auto; max-height: 100px; object-fit: cover;'>
-                                    <img src='{imagenAleatoria}' alt='Imagen Decorativa' style='max-width: 100%; height: auto; border-radius: 10px;' />
+                                <div style='text-align: center; margin-bottom: 20px;'>
+                                    <img src='{imagenAleatoria}' alt='Imagen Decorativa' style='transform: scale(0.5);width: 100%; max-width: 150px; height: auto;object-fit: cover;' />
                                 </div>
-                                <br/>
+                                <h3 class='mdl-typography--headline' style='text-align: center; color: #ff4081; margin-bottom: 10px;'>🎉 FELICIDADES 🎉</h3>
                                 <p class='mdl-typography--body-1' style='font-size: 1.3em; text-align: justify; margin-bottom: 20px;'>{promocion.especificaciones}</p>
                                 <p class='mdl-typography--body-1' style='font-size: 1.3em; text-align: justify; margin-bottom: 20px;'>Presenta el siguiente código en cualquiera de nuestras sucursales:</p>
                                 <div style = 'text-align: center; margin: 20px 0;'>
