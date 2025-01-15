@@ -50,7 +50,7 @@
           <Property Name="descripcion" Type="nvarchar(max)" />
           <Property Name="codigoURL" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__MOBClient__id_ub__61C73428">
+        <Association Name="FK__MOBClient__id_ub__7C7B2A64">
           <End Role="MOBUbicaciones" Type="Self.MOBUbicaciones" Multiplicity="0..1" />
           <End Role="MOBClientes" Type="Self.MOBClientes" Multiplicity="*" />
           <ReferentialConstraint>
@@ -62,7 +62,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MOBPromoc__id_cl__67800D7E">
+        <Association Name="FK__MOBPromoc__id_cl__023403BA">
           <End Role="MOBClientes" Type="Self.MOBClientes" Multiplicity="1" />
           <End Role="MOBPromocionesGeneradas" Type="Self.MOBPromocionesGeneradas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -74,7 +74,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MOBPromoc__id_pr__668BE945">
+        <Association Name="FK__MOBPromoc__id_pr__013FDF81">
           <End Role="MOBPromociones" Type="Self.MOBPromociones" Multiplicity="1" />
           <End Role="MOBPromocionesGeneradas" Type="Self.MOBPromocionesGeneradas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -86,7 +86,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MOBPromoc__id_ub__687431B7">
+        <Association Name="FK__MOBPromoc__id_ub__032827F3">
           <End Role="MOBUbicaciones" Type="Self.MOBUbicaciones" Multiplicity="1" />
           <End Role="MOBPromocionesGeneradas" Type="Self.MOBPromocionesGeneradas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -104,19 +104,19 @@
           <EntitySet Name="MOBPromociones" EntityType="Self.MOBPromociones" Schema="dba" store:Type="Tables" />
           <EntitySet Name="MOBPromocionesGeneradas" EntityType="Self.MOBPromocionesGeneradas" Schema="dba" store:Type="Tables" />
           <EntitySet Name="MOBUbicaciones" EntityType="Self.MOBUbicaciones" Schema="dba" store:Type="Tables" />
-          <AssociationSet Name="FK__MOBClient__id_ub__61C73428" Association="Self.FK__MOBClient__id_ub__61C73428">
+          <AssociationSet Name="FK__MOBClient__id_ub__7C7B2A64" Association="Self.FK__MOBClient__id_ub__7C7B2A64">
             <End Role="MOBUbicaciones" EntitySet="MOBUbicaciones" />
             <End Role="MOBClientes" EntitySet="MOBClientes" />
           </AssociationSet>
-          <AssociationSet Name="FK__MOBPromoc__id_cl__67800D7E" Association="Self.FK__MOBPromoc__id_cl__67800D7E">
+          <AssociationSet Name="FK__MOBPromoc__id_cl__023403BA" Association="Self.FK__MOBPromoc__id_cl__023403BA">
             <End Role="MOBClientes" EntitySet="MOBClientes" />
             <End Role="MOBPromocionesGeneradas" EntitySet="MOBPromocionesGeneradas" />
           </AssociationSet>
-          <AssociationSet Name="FK__MOBPromoc__id_pr__668BE945" Association="Self.FK__MOBPromoc__id_pr__668BE945">
+          <AssociationSet Name="FK__MOBPromoc__id_pr__013FDF81" Association="Self.FK__MOBPromoc__id_pr__013FDF81">
             <End Role="MOBPromociones" EntitySet="MOBPromociones" />
             <End Role="MOBPromocionesGeneradas" EntitySet="MOBPromocionesGeneradas" />
           </AssociationSet>
-          <AssociationSet Name="FK__MOBPromoc__id_ub__687431B7" Association="Self.FK__MOBPromoc__id_ub__687431B7">
+          <AssociationSet Name="FK__MOBPromoc__id_ub__032827F3" Association="Self.FK__MOBPromoc__id_ub__032827F3">
             <End Role="MOBUbicaciones" EntitySet="MOBUbicaciones" />
             <End Role="MOBPromocionesGeneradas" EntitySet="MOBPromocionesGeneradas" />
           </AssociationSet>
