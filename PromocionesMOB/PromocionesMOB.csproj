@@ -131,8 +131,16 @@
     <Content Include="fonts\ITCAvantGardePro-Md.woff" />
     <Content Include="fonts\Athelas-Regular.ttf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Imagenes\CONEJOS_1.jpg" />
+    <Content Include="Imagenes\CONEJOS_2.jpg" />
+    <Content Include="Imagenes\CONEJOS_3.jpg" />
+    <Content Include="Imagenes\CONEJOS_4.jpg" />
+    <Content Include="Imagenes\CONEJOS_5.jpg" />
+    <Content Include="Imagenes\CONEJOS_6.jpg" />
+    <Content Include="Imagenes\CONEJOS_7.jpg" />
     <Content Include="Imagenes\conejo_1.svg" />
     <Content Include="Imagenes\conejo_2.svg" />
+    <Content Include="Imagenes\welcome.jpg" />
     <Content Include="Imagenes\mob_logo.svg" />
     <Content Include="promociones.aspx" />
     <Content Include="Scripts\bootstrap.js" />

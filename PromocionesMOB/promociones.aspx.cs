@@ -22,34 +22,28 @@ namespace PromocionesMOB
         #region Métodos
         private void ValidarParametros()
         {
-            bool contieneParametro = Request.QueryString["id"] != null || Request.QueryString["tkn"] != null;
+            bool contieneParametro = !string.IsNullOrWhiteSpace(Request.QueryString["id"]) ||
+                         !string.IsNullOrWhiteSpace(Request.QueryString["tkn"]);
 
-            if (contieneParametro)
-            {
-                if (Request.QueryString["id"] != null)
-                {
-                    if (string.IsNullOrWhiteSpace(Request.QueryString["id"]))
-                        mvw_opciones.SetActiveView(vNoID);
-
-                    codigoUbicacion = Request.QueryString["id"];
-                    MOBUbicaciones ubicacion = MOBUbicacionesClass.ObtenerMOBUbicaciones().FirstOrDefault(u=>u.codigoURL.Equals(codigoUbicacion));
-                    if (ubicacion == null) mvw_opciones.SetActiveView(vNoID);
-                }
-
-                if (Request.QueryString["tkn"] != null)
-                {
-                    if (string.IsNullOrWhiteSpace(Request.QueryString["tkn"]))
-                        mvw_opciones.SetActiveView(vNoID);
-                    try { token = Request.QueryString["tkn"]; } catch { mvw_opciones.SetActiveView(vNoID); }
-
-                    mvw_opciones.SetActiveView(vCorreoValidacion);
-                }
-            }
-            else
+            if (!contieneParametro)
             {
                 mvw_opciones.SetActiveView(vNoID);
+                return;
             }
 
+            // Procesar id si está presente
+            if (!string.IsNullOrWhiteSpace(Request.QueryString["id"]))
+            {
+                ProcesarId(Request.QueryString["id"]);
+                return;
+            }
+
+            // Procesar token si está presente
+            if (!string.IsNullOrWhiteSpace(Request.QueryString["tkn"]))
+            {
+                ProcesarToken(Request.QueryString["tkn"]);
+                return;
+            }
         }
         private void ValidarCookie()
         {
@@ -68,28 +62,94 @@ namespace PromocionesMOB
                     MOBPromocionesGeneradas promocionGenerada = MOBPromocionesGeneradasClass.ObtenerMOBPromocionesGeneradas().FirstOrDefault(pg => pg.id_cliente == cliente.id_cliente);
                     if (promocionGenerada != null)
                     {
-                        MOBPromociones promocion = MOBPromocionesClass.ObtenerMOBPromocion(promocionGenerada.id_promocion);
-                        string codigoBarras = promocionGenerada.id_ubicacion.ToString("D2") + promocionGenerada.id_promocion_generada.ToString("D3") + "-MOB" + promocionGenerada.id_promocion.ToString("D2");
-                        string texto = $@"
-                        <h3>FELICIDADES</h3>
-                        <br />
-                        <p style = 'font-size: 1.3em; text-align: justify;' >
-                            {promocion.especificaciones}
-                        </p>
-                        <p style = 'font-size: 1.3em; text-align: justify;'> Presenta el siguiente código en cualquiera de nuestras sucursales:</p>
-                        <p style='text-align: center'>
-                            <span class='font'>{codigoBarras}</span>
-                            <br />
-                            <span style='letter-spacing:4px;'>{codigoBarras}</span>
-                        </p>";
-
-
+                        string texto = ObtenerTextoPromocion(promocionGenerada);
                         lbl_promocion.Text = texto;
                         mvw_opciones.SetActiveView(vPromocion);
 
                         tieneCookie = true;
                     }
                 }
+            }
+        }
+
+        private void CrearCookieCliente(MOBClientes cliente)
+        {
+            byte[] cookie = Encoding.UTF8.GetBytes(cliente.correo);
+            byte[] encriptado = MachineKey.Protect(cookie);
+            HttpCookie oCookie = new HttpCookie("_MOB", HttpServerUtility.UrlTokenEncode(encriptado))
+            {
+                Expires = DateTime.MaxValue
+            };
+            Response.SetCookie(oCookie);
+        }
+
+        private static string ObtenerTextoPromocion(MOBPromocionesGeneradas promocionGenerada)
+        {
+            string[] imagenes = new string[] { "Imagenes/CONEJOS_1.jpg", "Imagenes/CONEJOS_2.jpg", "Imagenes/CONEJOS_3.jpg", "Imagenes/CONEJOS_4.jpg", "Imagenes/CONEJOS_5.jpg", "Imagenes/CONEJOS_6.jpg", "Imagenes/CONEJOS_7.jpg" };
+            Random random = new Random();
+            string imagenAleatoria = imagenes[random.Next(imagenes.Length)];
+        
+            MOBPromociones promocion = MOBPromocionesClass.ObtenerMOBPromocion(promocionGenerada.id_promocion);
+            string codigoBarras = promocionGenerada.id_ubicacion.ToString("D2") + promocionGenerada.id_promocion_generada.ToString("D3") + "-MOB" + promocionGenerada.id_promocion.ToString("D2");
+            string texto = $@"
+                            <div class='mdl-card mdl-shadow--2dp' style='padding: 20px; max-width: 600px; margin: 20px auto;'>
+                                <h3 class='mdl-typography--headline' style='text-align: center; color: #ff4081; margin-bottom: 10px;'>🎉 FELICIDADES 🎉</h3>
+                                <br/>
+                                <div style='width: 100%; height: auto; max-height: 100px; object-fit: cover;'>
+                                    <img src='{imagenAleatoria}' alt='Imagen Decorativa' style='max-width: 100%; height: auto; border-radius: 10px;' />
+                                </div>
+                                <br/>
+                                <p class='mdl-typography--body-1' style='font-size: 1.3em; text-align: justify; margin-bottom: 20px;'>{promocion.especificaciones}</p>
+                                <p class='mdl-typography--body-1' style='font-size: 1.3em; text-align: justify; margin-bottom: 20px;'>Presenta el siguiente código en cualquiera de nuestras sucursales:</p>
+                                <div style = 'text-align: center; margin: 20px 0;'>
+                                    <span class='mdl-typography--headline font'>*{codigoBarras}*</span>
+                                    <span class= 'mdl-typography--body-1' style = 'display: block; letter-spacing: 4px; color: #555;' >{ codigoBarras}</span>
+                                </div>
+                            </div>";
+            return texto;
+        }
+
+        void ProcesarId(string codigoUbicacion)
+        {
+            MOBUbicaciones ubicacion = MOBUbicacionesClass.ObtenerMOBUbicaciones()
+                                       .FirstOrDefault(u => u.codigoURL.Equals(codigoUbicacion));
+
+            if (ubicacion == null)
+            {
+                mvw_opciones.SetActiveView(vNoID);
+                return;
+            }
+        }
+
+        void ProcesarToken(string token)
+        {
+            MOBClientes cliente = MOBClientesClass.ObtenerMOBClientes()
+                                  .SingleOrDefault(c => c.tokenValidacion.Equals(token));
+
+            if (cliente == null)
+            {
+                mvw_opciones.SetActiveView(vNoID);
+                return;
+            }
+
+            if (cliente.validado == false)
+            {
+                mvw_opciones.SetActiveView(vCorreoValidacion);
+                return;
+            }
+
+            MOBPromocionesGeneradas promocionGenerada = MOBPromocionesGeneradasClass.ObtenerMOBPromocionesGeneradas()
+                                                        .FirstOrDefault(pg => pg.id_cliente == cliente.id_cliente);
+
+            if (promocionGenerada != null)
+            {
+                CrearCookieCliente(cliente);
+                lbl_promocion.Text = ObtenerTextoPromocion(promocionGenerada);
+                mvw_opciones.SetActiveView(vPromocion);
+            }
+            else
+            {
+                mvw_opciones.SetActiveView(vNoID);
             }
         }
         #endregion
@@ -121,32 +181,9 @@ namespace PromocionesMOB
 
                 if (MOBPromocionesGeneradasClass.RegistrarMOBPromocionesGeneradas(promocionGenerada) > 0)
                 {
-                    MOBPromociones promocion = MOBPromocionesClass.ObtenerMOBPromocion(promocionGenerada.id_promocion);
-                    string codigoBarras = promocionGenerada.id_ubicacion.ToString("D2") + promocionGenerada.id_promocion_generada.ToString("D3") + "-MOB" + promocionGenerada.id_promocion.ToString("D2"); 
-                    string texto =$@"
-                        <h3>FELICIDADES</h3>
-                        <br />
-                        <p style = 'font-size: 1.3em; text-align: justify;' >
-                            {promocion.especificaciones}
-                        </p>
-                        <p style = 'font-size: 1.3em; text-align: justify;'> Presenta el siguiente código en cualquiera de nuestras sucursales:</p>
-                        <p style='text-align: center'>
-                            <span class='font'>{codigoBarras}</span>
-                            <br />
-                            <span style='letter-spacing:4px;'>{codigoBarras}</span>
-                        </p>";
-
-
+                    string texto = ObtenerTextoPromocion(promocionGenerada);
                     lbl_promocion.Text = texto;
-
-
-                    byte[] cookie = Encoding.UTF8.GetBytes(cliente.correo);
-                    byte[] encriptado = MachineKey.Protect(cookie);
-                    HttpCookie oCookie = new HttpCookie("_MOB", HttpServerUtility.UrlTokenEncode(encriptado))
-                    {
-                        Expires = DateTime.MaxValue
-                    };
-                    Response.SetCookie(oCookie);
+                    CrearCookieCliente(cliente);
 
                     mvw_opciones.SetActiveView(vPromocion);
                 }
