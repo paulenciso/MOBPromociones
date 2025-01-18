@@ -22,6 +22,7 @@ namespace MOBClass
         public Nullable<bool> entregado { get; set; }
         public Nullable<int> id_ticket { get; set; }
         public Nullable<System.DateTime> fecha_creacion { get; set; }
+        public Nullable<int> idSucursal { get; set; }
     
         public virtual MOBClientes MOBClientes { get; set; }
         public virtual MOBPromociones MOBPromociones { get; set; }

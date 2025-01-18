@@ -16,6 +16,9 @@
     <EntitySetMapping Name="MOBPromociones">
       <EntityTypeMapping TypeName="ninadbServiciosModel.MOBPromociones">
         <MappingFragment StoreEntitySet="MOBPromociones">
+          <ScalarProperty Name="ProductoGratis" ColumnName="ProductoGratis" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
           <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
           <ScalarProperty Name="premios_restantes" ColumnName="premios_restantes" />
           <ScalarProperty Name="imagen_nombre" ColumnName="imagen_nombre" />
@@ -29,6 +32,7 @@
     <EntitySetMapping Name="MOBPromocionesGeneradas">
       <EntityTypeMapping TypeName="ninadbServiciosModel.MOBPromocionesGeneradas">
         <MappingFragment StoreEntitySet="MOBPromocionesGeneradas">
+          <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
           <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
           <ScalarProperty Name="id_ticket" ColumnName="id_ticket" />
           <ScalarProperty Name="entregado" ColumnName="entregado" />

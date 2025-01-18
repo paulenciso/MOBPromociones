@@ -27,6 +27,9 @@ namespace MOBClass
         public string imagen_nombre { get; set; }
         public int premios_restantes { get; set; }
         public Nullable<System.DateTime> fecha_creacion { get; set; }
+        public decimal Valor { get; set; }
+        public string Codigo { get; set; }
+        public bool ProductoGratis { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MOBPromocionesGeneradas> MOBPromocionesGeneradas { get; set; }

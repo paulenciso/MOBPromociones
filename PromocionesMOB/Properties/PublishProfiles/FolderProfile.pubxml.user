@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\Sistemas2\Documents\GitHub\Publicaciones\PromocionesMOB</_PublishTargetUrl>
-    <History>True|2025-01-15T20:18:21.6544619Z;</History>
+    <History>True|2025-01-16T18:28:22.0548017Z;True|2025-01-16T11:08:22.6856509-06:00;True|2025-01-15T22:03:06.8203263-06:00;True|2025-01-15T22:02:53.2271667-06:00;True|2025-01-15T19:33:24.4143110-06:00;True|2025-01-15T14:18:21.6544619-06:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
@@ -51,22 +51,22 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/25/2012 12:48:56</publishTime>
     </File>
     <File Include="bin/MOBClassLibrary.dll">
-      <publishTime>01/15/2025 14:18:17</publishTime>
+      <publishTime>01/16/2025 13:04:50</publishTime>
     </File>
     <File Include="bin/MOBClassLibrary.dll.config">
-      <publishTime>01/14/2025 14:12:20</publishTime>
+      <publishTime>01/16/2025 14:17:59</publishTime>
     </File>
     <File Include="bin/MOBClassLibrary.pdb">
-      <publishTime>01/15/2025 14:18:17</publishTime>
+      <publishTime>01/16/2025 13:04:50</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>04/22/2019 01:06:16</publishTime>
     </File>
     <File Include="bin/PromocionesMOB.dll">
-      <publishTime>01/15/2025 14:18:17</publishTime>
+      <publishTime>01/16/2025 14:19:33</publishTime>
     </File>
     <File Include="bin/PromocionesMOB.pdb">
-      <publishTime>01/15/2025 14:18:17</publishTime>
+      <publishTime>01/16/2025 14:19:33</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>08/08/2018 05:38:48</publishTime>
@@ -251,6 +251,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Content/Site.css">
       <publishTime>01/13/2025 12:22:43</publishTime>
     </File>
+    <File Include="Default.aspx">
+      <publishTime>01/16/2025 14:21:37</publishTime>
+    </File>
     <File Include="favicon.ico">
       <publishTime>01/14/2025 15:46:48</publishTime>
     </File>
@@ -305,11 +308,23 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Imagenes/conejo_2.svg">
       <publishTime>01/14/2025 15:39:52</publishTime>
     </File>
+    <File Include="Imagenes/LOGO-INTERACCION-2.jpg">
+      <publishTime>01/16/2025 14:07:17</publishTime>
+    </File>
+    <File Include="Imagenes/LOGO-TAGLINE-NEGRO.jpg">
+      <publishTime>01/16/2025 14:08:12</publishTime>
+    </File>
+    <File Include="Imagenes/LOGO-VARIANTE-NEGRO.jpg">
+      <publishTime>01/16/2025 14:10:30</publishTime>
+    </File>
+    <File Include="Imagenes/LogoNina.png">
+      <publishTime>01/16/2025 13:45:26</publishTime>
+    </File>
     <File Include="Imagenes/mob_logo.svg">
       <publishTime>01/14/2025 15:39:52</publishTime>
     </File>
     <File Include="Imagenes/welcome.jpg">
-      <publishTime>01/15/2025 11:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="promociones.aspx">
       <publishTime>01/15/2025 13:59:23</publishTime>
@@ -408,7 +423,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/13/2025 12:23:51</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/14/2025 13:38:04</publishTime>
+      <publishTime>01/16/2025 14:19:33</publishTime>
     </File>
   </ItemGroup>
 </Project>

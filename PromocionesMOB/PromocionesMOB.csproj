@@ -140,9 +140,13 @@
     <Content Include="Imagenes\CONEJOS_7.jpg" />
     <Content Include="Imagenes\conejo_1.svg" />
     <Content Include="Imagenes\conejo_2.svg" />
+    <Content Include="Imagenes\LOGO-INTERACCION-2.jpg" />
+    <Content Include="Imagenes\LOGO-TAGLINE-NEGRO.jpg" />
+    <Content Include="Imagenes\LOGO-VARIANTE-NEGRO.jpg" />
+    <Content Include="Imagenes\LogoNina.png" />
     <Content Include="Imagenes\welcome.jpg" />
     <Content Include="Imagenes\mob_logo.svg" />
-    <Content Include="promociones.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -181,12 +185,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="promociones.aspx.cs">
-      <DependentUpon>promociones.aspx</DependentUpon>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="promociones.aspx.designer.cs">
-      <DependentUpon>promociones.aspx</DependentUpon>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">

@@ -48,6 +48,9 @@
     <Property Name="premios_restantes" Type="Int32" Nullable="false" />
     <Property Name="fecha_creacion" Type="DateTime" Precision="3" />
     <NavigationProperty Name="MOBPromocionesGeneradas" Relationship="ninadbServiciosModel.FK__MOBPromoc__id_pr__424E88CF" FromRole="MOBPromociones" ToRole="MOBPromocionesGeneradas" />
+    <Property Name="Valor" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductoGratis" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="MOBPromocionesGeneradas">
     <Key>
@@ -64,6 +67,7 @@
     <NavigationProperty Name="MOBClientes" Relationship="ninadbServiciosModel.FK__MOBPromoc__id_cl__4342AD08" FromRole="MOBPromocionesGeneradas" ToRole="MOBClientes" />
     <NavigationProperty Name="MOBPromociones" Relationship="ninadbServiciosModel.FK__MOBPromoc__id_pr__424E88CF" FromRole="MOBPromocionesGeneradas" ToRole="MOBPromociones" />
     <NavigationProperty Name="MOBUbicaciones" Relationship="ninadbServiciosModel.FK__MOBPromoc__id_ub__4436D141" FromRole="MOBPromocionesGeneradas" ToRole="MOBUbicaciones" />
+    <Property Name="idSucursal" Type="Int32" />
   </EntityType>
   <EntityType Name="MOBUbicaciones">
     <Key>
